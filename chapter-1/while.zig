@@ -47,3 +47,21 @@ test "while with break" {
 
     try expect(sum == 1);
 }
+
+// Labeled while
+test "nested break" {
+    outer: while (true) {
+        while (true) {
+            break :outer;
+        }
+    }
+}
+
+test "nested continue" {
+    var i: usize = 0;
+    first: while (i < 10) : (i += 1) {
+        while (true) {
+            continue :first;
+        }
+    }
+}
